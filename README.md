@@ -11,7 +11,7 @@ ios     | Xg-Push-SDK-iOS-2.4.6.xcode6.4
 
 ```bash
 cordova plugin add https://github.com/sunlu/cordova-plugin-xgpush --save \
---variable ANDROID_ACCESS_ID="Your ID"  --variable ANDROID_ACCESS_KEY="Your Key" --variable IOS_ACCESS_ID="Your ID"  --variable \ IOS_ACCESS_KEY="Your Key"
+--variable ANDROID_ACCESS_ID="Your ID"  --variable ANDROID_ACCESS_KEY="Your Key" --variable IOS_ACCESS_ID="Your ID"  --variable IOS_ACCESS_KEY="Your Key"
 ```
 ## 示例
 ```js
