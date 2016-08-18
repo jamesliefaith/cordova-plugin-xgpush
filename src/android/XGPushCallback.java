@@ -36,7 +36,7 @@ public class XGPushCallback implements XGIOperateCallback {
     } catch (JSONException e) {
       e.printStackTrace();
     }
-    this.callback.success(results);
+    this.callback.success(data.toString());
   }
 
 }
