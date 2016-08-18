@@ -174,19 +174,9 @@ static NSDictionary *_luanchOptions=nil;
         [XGPush setAccount:account];
     }
     
-    // FIXME: 放到 background thread 里运行时无法执行回调
-    NSString * result = [XGPush registerDevice:self.deviceToken successCallback:^{
-        // 成功
-        NSLog(@"[XGPushPlugin] registerPush success");
-        CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-        [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-        
-    } errorCallback:^{
-        // 失败
-        NSLog(@"[XGPushPlugin] registerPush error");
-        CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
-        [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-    }];
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[NSString stringWithFormat: @"%@",self.deviceToken]];
+    [result setKeepCallback:[NSNumber numberWithBool:YES]];
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
     
     NSLog(@"[XGPushPlugin] registerDevice result = %@",result);
 }
