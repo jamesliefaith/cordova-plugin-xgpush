@@ -84,6 +84,7 @@ function XGPush() {
             channel.onCordovaXGPushReady.fire();
         }, function (e) {
             console.log("[ERROR] RegisterPush: ", e);
+            channel.onCordovaXGPushReady.fire();
         });
     });
 }
