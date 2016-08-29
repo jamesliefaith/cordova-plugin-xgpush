@@ -24,7 +24,7 @@
 }
 
 -(void)applicationDidLaunch:(NSNotification *)notification{
-    
+
     if (notification) {
         [XGPush handleLaunching: notification.userInfo];
         [CDVXGPushPlugin setLaunchOptions:notification.userInfo];
@@ -41,17 +41,31 @@
 
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
-    
+
     NSLog(@"[AppDelegate] receive local notification");
-    
+
     //notification是发送推送时传入的字典信息
     [XGPush localNotificationAtFrontEnd:notification userInfoKey:@"clockID" userInfoValue:@"myid"];
-    
+
     //删除推送列表中的这一条
     [XGPush delLocalNotification:notification];
-    
+
     //清空推送列表
     //[XGPush clearLocalNotifications];
+}
+
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+
+    NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken: %@", deviceToken);
+    NSString *dt = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    dt = [dt stringByReplacingOccurrencesOfString:@" " withString:@""];
+    //self.DeviceToken=dt;
+    [[NSUserDefaults standardUserDefaults] setObject: dt forKey:@"deviceID"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+
+
 }
 
 @end
