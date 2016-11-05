@@ -2,8 +2,8 @@
 
 SDK     | version
 ------- | --------------------------------
-android | Xg-Push-SDK-Android-2.42
-ios     | Xg-Push-SDK-iOS-2.4.6.xcode6.4
+android | Xg-Push-SDK-Android-2.47
+ios     | Xg-Push-SDK-iOS-2.4.9.xcode6.4
 
 ## 安装方法
 
